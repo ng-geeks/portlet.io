@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    angular.module('pfmApp') .directive('hierarchyView', function(RecursionHelper, $log) {
+    angular.module('myApp') .directive('hierarchyView', function(RecursionHelper, $log) {
         return {
             restrict: "E",
             scope: {

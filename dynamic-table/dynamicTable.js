@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('pfmApp').directive('dynamicTable', function($log) {
+    angular.module('myApp').directive('dynamicTable', function($log) {
         return {
             restrict: 'EA',
             templateUrl: './views/directives/dynamic-table.html',
