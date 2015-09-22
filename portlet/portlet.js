@@ -31,6 +31,6 @@
         };
     };
 
-    angular.module('app')
+    angular.module('myApp')
         .directive('portlet', portlet);
 }());
