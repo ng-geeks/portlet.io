@@ -26,7 +26,7 @@
     *   --- DATA EXAMPLE ---
     *   vm.lookupResults = {columns : [], rows: [], keys: [], rowClickHandler : yourScopeControllerFunction};
     *   vm.lookupResults.rows = data.DATA.ROWS;
-    *   vm.lookupResults.columns = _.map(_.sortBy(data.DATA.COLUMNS, function(item) {
+    *   vm.lookupResults.columns = _.map(_.sortBy(data.COLUMNS, function(item) {
     *       if(item.LABEL !== undefined) {
     *           vm.lookupResults.keys.push(item.ID);
     *       }
