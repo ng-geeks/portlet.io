@@ -1,2 +1,2 @@
 # dynamic-table
-A dynamic table that is highly-customizable
+A table directive that is highly-customizable
