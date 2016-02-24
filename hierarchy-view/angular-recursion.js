@@ -43,6 +43,6 @@
         };
     }
 
-    angular.module('app').factory('RecursionHelper', RecursionHelper);
+    angular.module('portlet.io.hierarchy').factory('RecursionHelper', RecursionHelper);
 
 }());
