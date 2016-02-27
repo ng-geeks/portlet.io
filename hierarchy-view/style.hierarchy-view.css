@@ -1,14 +1,15 @@
 /*===============TREE BRANCH==============*/
-ul.hierarchy-tree { padding-left: 5px; margin: 0; padding: 0; list-style: none; }
-ul.hierarchy-tree li { margin: 0; padding: 0 1.5em; /* indentation + .5em */ line-height: 2em; /* default list item's `line-height` */ color: #CCC; position: relative; }
-ul.hierarchy-tree li > a { text-decoration : none; }
-ul.hierarchy-tree li > a.active { font-weight: 700; }
-ul.hierarchy-tree li > i { color: #999; }
+ul.hierarchy-tree { padding-left: 5px; list-style: none; }
 ul.hierarchy-tree ul.branch { margin: 0; padding: 0; list-style: none; }
-ul.hierarchy-tree ul.branch { margin-left: 8px; /* indentation */ position: relative; }
-ul.hierarchy-tree ul.branch ul.hierarchy-tree { margin-left:0 } /* (indentation/2) */
+ul.hierarchy-tree ul.branch { margin-left: 5px; position: relative; }
+ul.hierarchy-tree ul.branch ul.hierarchy-tree { margin-left:0 }
 ul.hierarchy-tree ul.branch:before { content: ""; display: block; width: 0; position: absolute; top: 0; bottom: 0; left: 0; border-left: 1px solid; }
+ul.hierarchy-tree li { margin: 0; padding: 0 1.5em; line-height: 2em; color: #CCC; position: relative; }
+ul.hierarchy-tree li > i { color: #999; }
+ul.hierarchy-tree li.active > i { color: #333; }
+ul.hierarchy-tree li > a { text-decoration: none; color: #999; }
+ul.hierarchy-tree li > a.active { font-weight: 600; color: #333; }
 ul.hierarchy-tree ul.branch li.parent.node { margin: 0; padding: 0 0 0 1.0em; line-height: 2em; }
 ul.hierarchy-tree ul.branch li.node { margin: 0; padding: 0; line-height: 2em; }
-ul.hierarchy-tree ul.branch li:before { content: ""; display: block; width: 10px; /* same with indentation */ height: 0; border-top: 1px solid; margin-top: -1px; /* border top width */ position: absolute; top: 1em; /* (line-height/2) */ left: 0; }
-ul.hierarchy-tree ul.branch li:last-child:before { background: white; /* same with body background */ height: auto; top: 1em; /* (line-height/2) */ bottom: 0; }
+ul.hierarchy-tree ul.branch li:before { content: ""; display: block; width: 10px; height: 0; border-top: 1px solid; margin-top: -1px; position: absolute; top: 1em; left: 0; }
+ul.hierarchy-tree ul.branch li:last-child:before { background: white; height: auto; top: 1em; bottom: 0; }
