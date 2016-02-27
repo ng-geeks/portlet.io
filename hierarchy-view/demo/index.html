@@ -51,7 +51,7 @@
         <script src="../hierarchyView.js"></script>
         <!-- The Angular Magic -->
         <script type="text/javascript">
-            (function() {
+            (function () {
                 var demoApp = angular.module('hierarchyDemo', ['portlet.io.hierarchy']);
                 demoApp.controller('hierarchyController', hierarchyController);
                 function hierarchyController() {
@@ -60,7 +60,7 @@
                         nodeID : 1000,
                         name : 'Tier 1',
                         icon : 'fa fa-server',
-                        callback : function(node) {
+                        callback : function (node) {
                             onNodeClick(node);
                         },
                         children : [
@@ -68,21 +68,21 @@
                                 nodeID : 1100,
                                 name : 'Tier 2-0',
                                 icon : 'fa fa-database',
-                                callback : function(node) {
+                                callback : function (node) {
                                     onNodeClick(node);
                                 }
                             },{
                                 nodeID : 1101,
                                 name : 'Tier 2-1',
                                 icon : 'fa fa-database',
-                                callback : function(node) {
+                                callback : function (node) {
                                     onNodeClick(node);
                                 }
                             },{
                                 nodeID : 1102,
                                 name : 'Tier 2-2',
                                 icon : 'fa fa-database',
-                                callback : function(node) {
+                                callback : function (node) {
                                     onNodeClick(node);
                                 },
                                 children : [
@@ -90,21 +90,21 @@
                                         nodeID : 1110,
                                         name : 'Tier 3-0',
                                         icon : 'fa fa-hdd-o',
-                                        callback : function(node) {
+                                        callback : function (node) {
                                             onNodeClick(node);
                                         }
                                     },{
                                         nodeID : 1111,
                                         name : 'Tier 3-1',
                                         icon : 'fa fa-hdd-o',
-                                        callback : function(node) {
+                                        callback : function (node) {
                                             onNodeClick(node);
                                         }
                                     },{
                                         nodeID : 1112,
                                         name : 'Tier 3-2',
                                         icon : 'fa fa-hdd-o',
-                                        callback : function(node) {
+                                        callback : function (node) {
                                             onNodeClick(node);
                                         },
                                         children : [
@@ -112,7 +112,7 @@
                                                 nodeID : 11110,
                                                 name : 'Tier 4-0',
                                                 icon : 'fa fa-floppy-o',
-                                                callback : function(node) {
+                                                callback : function (node) {
                                                     onNodeClick(node);
                                                 }
                                             }
@@ -123,7 +123,7 @@
                                 nodeID : 1103,
                                 name : 'Tier 2-3',
                                 icon : 'fa fa-database',
-                                callback : function(node) {
+                                callback : function (node) {
                                     onNodeClick(node);
                                 },
                                 children : [
