@@ -1,15 +1,6 @@
 (function () {
     'use strict';
-    angular.module('portlet.io.dynamictable', []).controller('dynamicTableController', function ($scope, $log) {
-        var vm = this;
-        vm.onRowClicked = function (callback) {
-            try {
-                callback(this.row);
-            } catch (error) {
-                $log.error(error);
-            }
-        };
-    }).directive('dynamicTable', function ($log) {
+    angular.module('portlet.io.dynamictable', []).directive('dynamicTable', function ($log) {
         return {
             restrict: 'E',
             transclude: true,
