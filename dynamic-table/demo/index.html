@@ -1,9 +1,86 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-  </head>
-  <body>
-  
-  </body>
+<html ng-app="dynamicTableDemo">
+    <head>
+        <title>Dynamic Table Demo : Portlet.io</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+        <link rel="stylesheet" href="../style.dynamic-table.css" />
+        <style type="text/css">
+            body {
+                margin-top: 70px;
+            }
+        </style>
+    </head>
+    <body ng-controller="hierarchyController as ctrl">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href class="navbar-brand">Dynamic Table Directive Example</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h3 class="lead">Controls</h3>
+                    <button class="btn btn-primary btn-sm" ng-click="ctrl.toggleScrollBody = !ctrl.toggleScrollBody">Toggle 'scroll-body'</button>
+                </div>
+                <div class="col-md-6 col-sm-12" ng-if="ctrl.selectedRow">
+                    <h3 class="lead">Slected Table Row</h3>
+                    {{ ctrl.selectedRow | json:4 }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <dynamic-table table-data="ctrl.tableData" scroll-body="ctrl.toggleScrollBody"></dynamic-table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Core Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/lodash/4.5.1/lodash.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+        <!-- Core Components -->
+        <script src="../dynamicTable.js"></script>
+        <!-- The Angular Magic -->
+        <script type="text/javascript">
+            (function () {
+                var demoApp = angular.module('dynamicTableDemo', ['portlet.io.dynamictable']);
+                demoApp.controller('hierarchyController', hierarchyController);
+                function hierarchyController($http, $log) {
+                    var vm = this;
+                    vm.toggleScrollBody = false;
+                    vm.selectedRow = null;
+                    
+                    $http({
+                        method : 'get',
+                        url : './data.json'
+                    }).then(function (results) {
+                        //results.data;
+                        vm.tableData = {columns : [], rows: [], keys: [], rowClickHandler : vm.onRowClick };
+                        vm.tableData.rows = results.data;
+                        vm.tableData.columns = _.keys(results.data[0]);
+                        vm.tableData.keys = _.keys(results.data[0]);
+                        vm.tableData.columnWidths = [20, 20, 20, 30, 10];
+                        
+                        /*vm.tableData.columns = _.map(_.sortBy(data, function(item) {
+                            if(item.LABEL !== undefined) {
+                                vm.lookupResults.keys.push(item.ID);
+                            }
+                            return item.ORDER;
+                        }), "LABEL");*/
+                    }, function (error, status) {
+                        $log.debug(status, error);
+                    });
+                    
+                    vm.onRowClick = function (row) {
+                        $log.debug(row);
+                        vm.selectedRow = row;
+                    };
+                }
+            })();
+        </script>
+    </body>
 </html>

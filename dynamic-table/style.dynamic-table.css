@@ -1,0 +1,28 @@
+table.dynamic-table {
+    
+}
+
+table.dynamic-table.table-hover tbody tr:hover {
+    background-color: #E4E4E4;
+}
+
+table.dynamic-table tbody tr.scroll-body-cell-container > td {
+    padding: 0;
+}
+
+table.dynamic-table tbody tr.scroll-body-cell-container > td div.table-scroll-body {
+    max-height: 400px;
+    overflow: auto;
+}
+
+table.dynamic-table table.table {
+    margin-bottom: 0px;
+}
+
+table.dynamic-table table.no-top-border tbody > tr:first-child td {
+    border-top: none;
+}
+
+table.dynamic-table tbody tr.row-pointer {
+    cursor: pointer;
+}

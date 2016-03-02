@@ -1,26 +1,27 @@
-<table class="table table-condensed flip-content" ng-class="{'no-bot-margin' : scrollBody, 'table-striped' : !scrollBody, 'table-hover' : data.rowClickHandler}">
+<table class="dynamic-table table table-condensed flip-content" ng-class="{'no-bot-margin' : scrollBody, 'table-striped' : !scrollBody, 'table-hover' : data.rowClickHandler}">
     <thead class="flip-content">
         <tr>
-            <th style="width: {{100 / data.columns.length}}%;" ng-repeat="column in data.columns" ng-if="column != undefined">{{column}}</th>
+            <th ng-if="!data.columnWidths" style="width: {{100 / data.columns.length}}%;" ng-repeat="column in data.columns">{{ column }}</th>
+            <th ng-if="data.columnWidths" ng-repeat="column in data.columns" style="width: {{ data.columnWidths[$index] }}%;" >{{ column }}</th>
         </tr>
     </thead>
-        <tbody>
-            <tr ng-if="scrollBody" class="scroll-body-cell-container">
-                <td colspan="{{data.columns.length}}">
-                    <div ng-class="{'table-scroll-body' : scrollBody}">
-                        <table class="table table-striped table-condensed" ng-class="{'no-bot-margin' : scrollBody, 'table-hover' : data.rowClickHandler}">
-                            <tbody>
-                                <tr ng-class="data.rowClickHandler ? 'row-pointer' : ''" ng-repeat="row in data.rows" ng-click="data.rowClickHandler ? onRowClicked(data.rowClickHandler) : null">
-                                    <td style="width: {{100 / data.columns.length}}%;" ng-repeat="key in data.keys">{{row[key].VALUE}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-            <tr ng-if="!scrollBody" ng-class="data.rowClickHandler ? 'row-pointer' : ''" ng-repeat="row in data.rows" ng-click="data.rowClickHandler ? onRowClicked(data.rowClickHandler) : null">
-                <td style="width: {{100 / data.columns.length}}%;" ng-repeat="key in data.keys">{{row[key].VALUE}}</td>
-            </tr>
-        </tbody>
-    </div>
+    <tbody>
+        <tr ng-if="scrollBody" class="scroll-body-cell-container">
+            <td colspan="{{ data.columns.length }}">
+                <div ng-class="{'table-scroll-body' : scrollBody}">
+                    <table class="table table-striped table-condensed no-top-border" ng-class="{'table-hover' : data.rowClickHandler}">
+                        <tbody>
+                            <tr ng-class="data.rowClickHandler ? 'row-pointer' : ''" ng-repeat="row in data.rows" ng-click="data.rowClickHandler ? onRowClicked(data.rowClickHandler) : null">
+                                <td ng-if="!data.columnWidths" style="width: {{ 100 / data.columns.length }}%;" ng-repeat="key in data.keys">{{ row[key] }}</td>
+                                <td ng-if="data.columnWidths" ng-repeat="key in data.keys" style="width: {{ data.columnWidths[$index] }}%;" >{{ row[key] }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr ng-if="!scrollBody" ng-class="{'row-pointer' : data.rowClickHandler}" ng-repeat="row in data.rows" ng-click="data.rowClickHandler ? onRowClicked(data.rowClickHandler) : null">
+            <td ng-repeat="key in data.keys">{{ row[key] }}</td>
+        </tr>
+    </tbody>
 </table>
