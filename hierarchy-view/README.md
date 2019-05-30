@@ -22,9 +22,10 @@ Placed the directive in your `HTML` and Configure
   name : 'Tier 3-2', // - String
   icon : 'fa fa-hdd-o', // Option font-awesome icon - String
   callback : function (node) { // * Anymous function for callback - Function
-    console.log(node); // node will be the node instance
-},
+    console.log(node); // node = node instance
+  },
   children : [...] // Optional if node has children and children are in the node structure - Array (colleciton)
+}
 ```
 
 ##### Data Example Defined in the `controller`
